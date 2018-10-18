@@ -23,6 +23,20 @@ module NavigationHelpers
     #
     #   when /^(.*)'s profile page$/i
     #     user_profile_path(User.find_by_login($1))
+    #     
+    when /^the details page for "(.*)"$/
+      movie_path(Movie.where("title = ?",$1).first)
+      
+    when /^the Similar Movies page for "(.*)"$/
+      movies_with_same_director_path(Movie.where("title = ?",$1).first)
+        
+    #when /^the details page for "(.+)"$/
+    #  detail_page_movie = Movie.find_by(title: $1)
+     # movie_path(detail_page_movie)
+        
+  #  when /^the Similar Movies page for "(.+)"$/
+  #    similar_movie = Movie.find_by(title: $1)
+    #  movies_with_same_director_path(similar_movie.first)
 
     else
       begin
